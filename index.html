@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f4">
+  <meta name="description" content="Um espaço simples para organizar matérias, anotações e sessões de estudo.">
+  <title>Estuda — seu espaço de estudos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section class="auth-screen" id="authScreen">
+    <div class="auth-card">
+      <a class="brand auth-brand" href="#" aria-label="Estuda"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 9.5c4.2-1.3 7.8-.6 11 1.8v14c-3.2-2.4-6.8-3.1-11-1.8zM27 9.5c-4.2-1.3-7.8-.6-11 1.8v14c3.2-2.4 6.8-3.1 11-1.8z"/><path d="M16 11.3v14"/></svg></span><span>estuda<span class="brand-period">.</span></span></a>
+      <div class="auth-eyebrow" id="authEyebrow">QUE BOM TER VOCÊ DE VOLTA</div>
+      <h1 id="authTitle">Vamos continuar?</h1>
+      <p class="auth-copy" id="authCopy">Entre para acessar suas matérias e seguir de onde parou.</p>
+      <form id="authForm" autocomplete="on">
+        <label class="auth-field" id="displayNameField" hidden><span>Como você quer ser chamado?</span><input id="displayNameInput" autocomplete="name" maxlength="40" placeholder="Seu nome"></label>
+        <div class="signup-institution" id="institutionFields" hidden>
+          <label class="auth-field institution-name-field"><span>Onde você estuda?</span><span class="institution-name-row"><input id="institutionNameInput" maxlength="100" placeholder="Comece a digitar o nome" autocomplete="organization" aria-autocomplete="list" aria-controls="institutionSuggestions" aria-expanded="false"><span class="institution-logo-preview" id="institutionLogoPreview" hidden></span></span><span class="institution-suggestions" id="institutionSuggestions" hidden></span><small class="auth-hint">Escolha uma sugestão ou escreva o nome completo.</small></label>
+          <div class="auth-select-row">
+            <label class="auth-field"><span>Tipo de instituição</span><select id="institutionKindInput"><option value="">Escolha uma opção</option><option value="Escola">Escola</option><option value="Faculdade">Faculdade</option><option value="Universidade">Universidade</option><option value="Instituto">Instituto</option><option value="Outra">Outra</option></select></label>
+            <label class="auth-field"><span>Tipo de rede</span><select id="institutionNetworkInput"><option value="">Escolha uma opção</option><option value="Pública">Pública</option><option value="Privada">Privada</option></select></label>
+          </div>
+        </div>
+        <label class="auth-field"><span>Login</span><input id="usernameInput" autocomplete="username" required minlength="3" maxlength="24" placeholder="seu.login"></label>
+        <label class="auth-field"><span>Senha</span><input id="passwordInput" type="password" autocomplete="current-password" required minlength="8" placeholder="Pelo menos 8 caracteres"></label>
+        <label class="remember-row" id="rememberRow"><input id="rememberMe" type="checkbox" checked><span>Continuar conectado neste dispositivo</span></label>
+        <button class="button primary auth-submit" id="authSubmit" type="submit">Entrar</button>
+        <div class="auth-message" id="authMessage" role="status"></div>
+      </form>
+      <div class="auth-switch"><span id="switchText">Primeira vez por aqui?</span><button id="switchAuthMode" type="button">Criar perfil</button></div>
+      <div class="auth-local-note"><span class="status-dot"></span>Seu perfil fica salvo neste dispositivo</div>
+    </div>
+  </section>
+
+  <div class="app-shell" id="appShell" hidden>
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#inicio" aria-label="Estuda início">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 9.5c4.2-1.3 7.8-.6 11 1.8v14c-3.2-2.4-6.8-3.1-11-1.8zM27 9.5c-4.2-1.3-7.8-.6-11 1.8v14c3.2-2.4 6.8-3.1 11-1.8z"/><path d="M16 11.3v14"/></svg></span>
+        <span>estuda<span class="brand-period">.</span></span>
+      </a>
+
+      <div class="sidebar-label">SEU ESPAÇO</div>
+      <nav class="nav-list" aria-label="Navegação principal">
+        <button class="nav-item active" data-view="inicio"><span class="nav-icon">⌂</span>Início</button>
+        <button class="nav-item" data-view="materias"><span class="nav-icon">▤</span>Minhas matérias</button>
+        <button class="nav-item" data-view="notas"><span class="nav-icon">▧</span>Notas e períodos</button>
+        <button class="nav-item" data-view="pomodoro"><span class="nav-icon">◷</span>Pomodoro</button>
+        <button class="nav-item" data-view="imagens"><span class="nav-icon">▧</span>Imagens</button>
+      </nav>
+
+      <div class="sidebar-label sound-label">PARA CONCENTRAR</div>
+      <button class="nav-item" data-view="sons"><span class="nav-icon">♫</span>Foco e sons</button>
+      <button class="nav-item" data-view="apoio"><span class="nav-icon">♡</span>Apoie o projeto</button>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-tip">
+        <div class="tip-spark">✦</div>
+        <strong>Um passo de cada vez.</strong>
+        <p>Todo momento de foco conta.</p>
+      </div>
+      <div class="local-note"><span class="status-dot"></span> Seus dados ficam salvos neste dispositivo</div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb"><span>Meu espaço</span><span class="crumb-slash">/</span><strong id="pageName">Início</strong></div>
+        <div class="top-actions">
+          <div class="today-chip"><span class="today-dot"></span><span id="todayLabel"></span></div>
+          <button class="appearance-button" id="openAppearance" aria-label="Alterar aparência"><span>◐</span><span class="appearance-word">Aparência</span></button>
+          <div class="profile-wrap"><button class="avatar" id="profileButton" title="Perfil" aria-label="Abrir menu do perfil">E</button><div class="profile-menu" id="profileMenu" hidden><div class="profile-menu-name" id="profileMenuName"></div><div class="profile-menu-institution" id="profileMenuInstitution" hidden></div><button type="button" id="changePasswordButton">⌑ Alterar senha</button><button type="button" id="addProfileButton">＋ Criar outro perfil</button><button type="button" id="logoutButton">↪ Sair do perfil</button></div></div>
+        </div>
+      </header>
+
+      <section class="content" id="viewRoot" aria-live="polite"></section>
+      <footer class="mobile-footer" aria-label="Navegação móvel">
+        <button class="mobile-nav active" data-view="inicio"><span>⌂</span>Início</button>
+        <button class="mobile-nav" data-view="materias"><span>▤</span>Matérias</button>
+        <button class="mobile-nav" data-view="notas"><span>▧</span>Notas</button>
+        <button class="mobile-nav" data-view="pomodoro"><span>◷</span>Foco</button>
+        <button class="mobile-nav" data-view="imagens"><span>▧</span>Imagens</button>
+        <button class="mobile-nav" data-view="apoio"><span>♡</span>Apoie</button>
+      </footer>
+    </main>
+  </div>
+
+  <dialog class="modal" id="subjectDialog">
+    <form method="dialog" id="subjectForm" class="modal-card">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+      <div class="eyebrow">ORGANIZAÇÃO</div>
+      <h2 id="subjectModalTitle">Criar matéria</h2>
+      <p class="modal-copy">Escolha um nome e uma cor para identificar sua matéria com facilidade.</p>
+      <label class="field-label" for="subjectName">Nome da matéria</label>
+      <input id="subjectName" class="text-input" maxlength="40" placeholder="Ex.: Biologia" required>
+      <div class="field-label color-label">Cor da matéria</div>
+      <div class="color-options" id="colorOptions"></div>
+      <div class="modal-actions"><button class="button secondary" type="button" data-close-modal>Cancelar</button><button class="button primary" id="saveSubject" type="submit">Salvar matéria</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="appearanceDialog">
+    <form method="dialog" class="modal-card appearance-card">
+      <button class="modal-close" type="button" data-close-appearance aria-label="Fechar">×</button>
+      <div class="eyebrow">DO SEU JEITO</div>
+      <h2>Aparência</h2>
+      <p class="modal-copy">Escolha um tema ou ajuste as cores do seu espaço.</p>
+      <div class="theme-options">
+        <button type="button" class="theme-option" data-theme-choice="bw"><span class="theme-preview theme-preview-bw"><i></i><b></b></span><strong>Preto e branco</strong><small>Leve e direto</small></button>
+        <button type="button" class="theme-option" data-theme-choice="spfc"><span class="theme-preview theme-preview-spfc"><i></i><b></b></span><strong>São Paulo FC</strong><small>Vermelho, preto e branco</small></button>
+        <button type="button" class="theme-option" data-theme-choice="custom"><span class="theme-preview theme-preview-custom"><i></i><b></b></span><strong>Personalizado</strong><small>Escolha sua cor</small></button>
+      </div>
+      <div class="custom-colors" id="customColors">
+        <label class="color-setting"><span>Cor principal</span><input id="accentColor" type="color" value="#202020"></label>
+        <label class="color-setting"><span>Fundo da página</span><select id="backgroundColor"><option value="#ffffff">Branco</option><option value="#f5f5f3">Cinza suave</option><option value="#fff8ed">Creme</option></select></label>
+      </div>
+      <div class="modal-actions"><button class="button secondary" type="button" data-close-appearance>Fechar</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="passwordDialog">
+    <form class="modal-card" id="passwordForm">
+      <button class="modal-close" type="button" data-close-password aria-label="Fechar">×</button>
+      <div class="eyebrow">SEGURANÇA</div>
+      <h2>Alterar senha</h2>
+      <p class="modal-copy">Escolha uma nova senha com pelo menos 8 caracteres.</p>
+      <label class="auth-field"><span>Senha atual</span><input id="currentPassword" type="password" autocomplete="current-password" required></label>
+      <label class="auth-field"><span>Nova senha</span><input id="newPassword" type="password" autocomplete="new-password" minlength="8" required></label>
+      <label class="auth-field"><span>Confirme a nova senha</span><input id="confirmPassword" type="password" autocomplete="new-password" minlength="8" required></label>
+      <div class="auth-message" id="passwordMessage" role="status"></div>
+      <div class="modal-actions"><button class="button secondary" type="button" data-close-password>Cancelar</button><button class="button primary" type="submit">Salvar senha</button></div>
+    </form>
+  </dialog>
+
+  <input id="imagePicker" type="file" accept="image/*" multiple hidden>
+  <script src="app.js"></script>
+</body>
+</html>

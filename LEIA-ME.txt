@@ -1,0 +1,30 @@
+ESTUDA — protótipo local de organização de estudos
+
+COMO ABRIR
+1. Abra a pasta estuda no VS Code.
+2. Abra index.html no navegador (duplo clique) ou use a extensão Live Server, se já tiver instalada.
+3. Não precisa instalar pacotes, criar conta ou configurar chave de IA.
+
+O QUE JÁ FUNCIONA
+- Entrar com perfil, criar perfis adicionais neste navegador, alterar senha e sair pelo menu do avatar.
+- Perfil inicial: login Andrey.Martins, senha 250208Aa. Perfis antigos do login padrão são atualizados ao abrir o site neste navegador, preservando os dados locais.
+- A senha é guardada como hash PBKDF2 com salt; o site não grava a senha em texto puro. A opção “Manter conectado” salva apenas a sessão local.
+- Criar matérias com cores próprias; cada matéria abre seu próprio caderno de anotações.
+- Dar nome às anotações, buscar pelo nome dentro da matéria e salvar automaticamente; as notas ficam separadas por matéria.
+- Registrar avaliações por matéria, comparar médias de 0 a 10 e encerrar bimestres ou semestres para guardar um histórico.
+- Excluir uma anotação ou uma matéria com confirmação. Ao excluir uma matéria, as anotações e imagens associadas também são removidas.
+- Usar o Lume para criar resumos selecionando frases importantes. O processamento acontece no próprio navegador, sem IA ou envio para servidor.
+- Usar Pomodoro com duração de foco e pausa ajustável.
+- Tocar ruídos ambientes sintetizados pelo navegador.
+- Armazenar imagens localmente pelo IndexedDB do navegador.
+- Apoiar o projeto pelo Pix exibido na aba “Apoie o projeto”.
+- Layout responsivo para computador e celular.
+
+PRIVACIDADE E LIMITES
+O conteúdo fica no armazenamento local deste navegador e dispositivo. Ele não sincroniza entre aparelhos e pode ser apagado se os dados do navegador forem limpos. As imagens usam o espaço de armazenamento do navegador. A fonte DM Sans/Manrope é carregada do Google Fonts quando houver internet; sem conexão, o sistema usa fontes locais alternativas.
+
+LOGIN E SEGURANÇA
+Este login é uma barreira local para separar perfis neste protótipo; como o site não tem servidor, não deve ser usado para proteger informações sensíveis nem como autenticação de um site público. O perfil inicial é criado no primeiro acesso e suas credenciais são iguais em qualquer cópia nova do protótipo. Para disponibilizar contas reais e sincronizadas a todos os estudantes, será preciso conectar um backend de autenticação e armazenamento.
+
+LUME — SISTEMA DE RESUMO
+O resumo extrativo pontua frases por repetição de palavras importantes e seleciona as mais representativas. Ele não compreende conceitos nem reescreve as anotações como uma IA faria; revise o resultado antes de usar.
